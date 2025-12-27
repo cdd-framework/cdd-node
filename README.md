@@ -1,6 +1,6 @@
 
 
-# CDD Framework (0.4.0-alpha.1)
+# CDD Framework (0.4.0-alpha.2)
 > **Cyberattack-Driven Development**: A high-performance vulnerability scanner powered by Rust.
 
 [![Rust](https://img.shields.io/badge/Language-Rust-orange.svg)](https://www.rust-lang.org/)
@@ -31,7 +31,7 @@ Bash
 
 cdd [https://yourwebsite.com](https://yourwebsite.com)
 
-Included Security Tests (v0.4.0-alpha.1):
+Included Security Tests (v0.4.0-alpha.2):
 Gateway: X-Powered-By : Detects technology stack exposure in HTTP headers.
 
 Protocol: HSTS Check : Verifies if Strict Transport Security is properly enforced.
@@ -62,6 +62,6 @@ This is an open-source project. Feel free to open issues or submit pull requests
 
 Author: Fabio Meyer<github.com/jemmyx>
 
-Version: 0.4.0-alpha.1
+Version: 0.4.0-alpha.2
 
 License: MIT

@@ -1,10 +1,17 @@
 {
     "name": "cdd-framework",
-    "version": "0.0.1",
+    "version": "0.2.0",
+    "bin": {
+        "cdd": "./bin/cli.js"
+    },
     "description": "Cyberattak-Driven Development Framework",
     "main": "index.js",
     "scripts": {
         "postinstall": "node scripts/install.js",
         "test": "node test.js"
+    },
+    "dependencies": {
+        "cli-table3": "^0.6.5",
+        "picocolors": "^1.1.1"
     }
 }

@@ -1,15 +1,47 @@
+#!/usr/bin/env node
+
 const { execFile} = require('child_process');
 const path = require('path');
 const os = require('os');
+const fs = require('fs');
 const Table = require('cli-table3');
 const pc = require('picocolors');
 
-// locate the binary
-const binaryName = os.platform() === 'win32' ? 'cdd-core.exe' : 'cdd-core';
-const binaryPath = path.join(__dirname, 'bin', binaryName)
+function getBinaryPath() {
+    const platform = os.platform();
+    let binaryName = '';
+
+    if (platform === 'win32') {
+        binaryName = 'cdd-core-win.exe';
+    } else if (platform === 'darwin') {
+        binaryName = 'cdd-core-macos';
+    } else if (platform === 'linux') {
+        binaryName = 'cdd-core-linux';
+    } else {
+        throw new Error(`Unsupported platform: ${platform}`);
+    }
+
+    const binPath = path.join(__dirname, 'bin', binaryName);
+
+    if(!fs.existsSync(binPath)) {
+        throw new Error(`CDD engine not found for platform: ${platform} at path: ${binPath}`);
+    }
+
+    if (platform !== 'win32') {
+        try {
+            fs.chmodSync(binPath, '755');
+        } catch (err) {
+            // already has permissions
+        }
+    }
+
+    return binPath;
+}
 
 function attack(targetUrl, options = {}) {
     return new Promise((resolve, reject) => {
+        const binaryPath = getBinaryPath();
+        console.log('binaryPath:', binaryPath); 
         console.log(pc.gray(`\n[${new Date().toLocaleTimeString()}] `) + pc.cyan('Initializing CDD Engine...'));
 
         execFile(binaryPath, [targetUrl], (error, stdout, stderr) => {

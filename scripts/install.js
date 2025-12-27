@@ -3,7 +3,7 @@ const path = require('path');
 const https = require('https');
 const os = require('os');
 
-const VERSION = 'v0.2.0';
+const VERSION = 'v0.3.0';
 const REPO = 'cdd-framework/cdd-core';
 const BIN_DIR = path.join(__dirname, '../bin');
 

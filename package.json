@@ -1,6 +1,6 @@
 {
     "name": "cdd-framework",
-    "version": "0.4.0-alpha.4",
+    "version": "0.4.0",
     "bin": {
         "cdd": "./bin/cli.js"
     },

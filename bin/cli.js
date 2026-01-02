@@ -2,7 +2,8 @@
 const { execSync } = require('child_process');
 const path = require('path');
 
-const RATEL_PATH = path.resolve(__dirname, '../../ratel-cli/target/debug/ratel-cli.exe');
+// const RATEL_PATH = path.resolve(__dirname, '../../ratel-cli/target/debug/ratel-cli.exe');
+const RATEL_PATH = "ratel";
 
 try {
     console.log("[cdd-node] Starting pre-audit tasks...");

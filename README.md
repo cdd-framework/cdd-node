@@ -1,6 +1,5 @@
+# CDD Framework (Node Adapter)
 
-
-# CDD Framework (0.4.0-alpha.2)
 > **Cyberattack-Driven Development**: A high-performance vulnerability scanner powered by Rust.
 
 [![Rust](https://img.shields.io/badge/Language-Rust-orange.svg)](https://www.rust-lang.org/)
@@ -16,30 +15,38 @@ CDD is a modern security scanning engine designed for speed and reliability. It 
 
 You don't need to have Rust installed locally to use the framework. The installer automatically fetches the pre-compiled binary for your specific architecture (Windows, macOS, or Linux).
 
-```bash
-# Clone the repository
-git clone [https://github.com/cdd-framework/cdd-node.git](https://github.com/cdd-framework/cdd-node.git)
-cd cdd-node
+This package is the entry point for the **Cyberattack-Driven Development** workflow. 
+It acts as a wrapper around the native `ratel-cli` engine.
 
-# Install dependencies and download the Rust kernel
-npm install -g .
-```
+## Prerequisites
+1. **Ratel-CLI**: Must be installed globally via the official `install.sh`. 
+   `ratel-cli` includes the native `cdd-core` library.
+
 ## Usage
-Run a security audit on any target URL directly from your terminal:
 
-Bash
+### 1. Initialize a project
+Setup the `.ratel` scenario and integrity baseline:
+```bash
+npx cdd-framework init
+```
 
-cdd [https://yourwebsite.com](https://yourwebsite.com)
+2. Run Security Audit
+This command calls the global ratel binary, parses the DSL, executes attacks via cdd-core, and displays a formatted report:
 
-Included Security Tests (v0.4.0-alpha.2):
-Gateway: X-Powered-By : Detects technology stack exposure in HTTP headers.
+```Bash
 
-Protocol: HSTS Check : Verifies if Strict Transport Security is properly enforced.
+npx cdd-framework run tests/ratel/security.ratel
+```
 
-Network: Permissive CORS Policy : Analyzes Cross-Origin Resource Sharing policies for potential data leaks.
+3. Pass-through commands
+Any other command is sent directly to the native engine:
 
-Business: Exposed Secrets : Scans for publicly accessible .env files containing sensitive credentials.
+```Bash
 
+npx cdd-framework check
+npx cdd-framework --version
+
+```
 
 ## Architecture
 The framework is architected for maximum performance and modularity:
@@ -62,6 +69,6 @@ This is an open-source project. Feel free to open issues or submit pull requests
 
 Author: Fabio Meyer<github.com/jemmyx>
 
-Version: 0.4.0-alpha.2
+Version: 0.4.0-alpha.5
 
 License: MIT
